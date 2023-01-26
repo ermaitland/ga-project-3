@@ -57,6 +57,37 @@ async function searchProducts(req, res, next) {
   }
 }
 
+const getFilteredProducts = async (req, res, next) => {
+  try {
+    const { brands, categories } = req.query;
+    console.log({ brands, categories });
+    const filters = [];
+    if (brands) {
+      filters.push({ brand: { $in: brands.split(',') } });
+    }
+
+    if (categories) {
+      filters.push({ category: { $in: categories.split(',') } });
+    }
+    if (filters.length > 0) {
+      const filteredProducts = await Product.find({
+        $and: filters
+      })
+        .populate('category')
+        .populate('brand');
+      return res.status(200).json(filteredProducts);
+    } else {
+      const allProducts = await Product.find()
+        .populate('category')
+        .populate('brand');
+      return res.status(200).json(allProducts);
+    }
+  } catch {
+    error;
+  }
+  next(error);
+};
+
 const createNewProduct = async (req, res, next) => {
   console.log('CURRENT USER', req.currentUser);
   try {
@@ -151,5 +182,6 @@ export default {
   getSingleProduct,
   updateSingleProduct,
   deleteSingleProduct,
-  searchProducts
+  searchProducts,
+  getFilteredProducts
 };

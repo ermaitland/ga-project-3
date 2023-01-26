@@ -12,6 +12,8 @@ Router.route('/products')
   .get(productsController.getAllProducts)
   .post(secureRoute, productsController.createNewProduct);
 
+Router.route('/products/filter').get(productsController.getFilteredProducts);
+
 Router.route('/products/search').get(productsController.searchProducts);
 
 Router.route('/products/:id')
