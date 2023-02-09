@@ -133,7 +133,7 @@ And simply filtered this into the function they gave:
 
 # Challenges
 
-Linh initially started by having the reviews model incorporated into the product model. However, this did not work due to the way the models were laid out, it made it hard to access a lot of information so due to the position I was in with my own sections, she passed the task of creating a separate reviews Schema and updating the controller to me.
+Initially the reviews model was incorporated into the product model. However, this did not work due to the way the models were laid out, it made it hard to access a lot of information. Due to the position I was in with my own sections, I took on the task of creating a separate reviews Schema and updating the controller.
 
 I making the reviews Schema, its own separate model Schema, and then I began to update the reviews controller to allow for the actions to take place:
 
