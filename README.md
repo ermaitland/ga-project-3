@@ -44,7 +44,7 @@ Our brief was to create a MERN stack application in one week using MongoDB for t
 
 # Planning
 
-Initially we started to brainstorm on a rough idea, and as it is Veganuary we decided to create a vegan products reviewing site. This would allow users to create products and link them to brands, search products and. Review products. We decided we wanted to add a users page too, with all the users profiles which showed you their comments too.
+Initially we started to brainstorm on a rough idea, and as it is Veganuary we decided to create a vegan products reviewing site. This would allow users to create products and link them to brands, search products and. Review products. We decided we wanted to add a users page too, with all the users profiles which showed you their comments.
 
 We used excalidraw to give us a basic idea of how things would be laid out on the page and it also prompted us to add in a search bar and a filter by. This was paired with some pseudocode and gave us the basic outline of how each aspect would interact with the rest of the app.
 
@@ -52,7 +52,7 @@ We used excalidraw to give us a basic idea of how things would be laid out on th
 
 We chose to use Trello to organise our tasks and as a way to keep on track with what the other members in the group had completed or were working on. This was the biggest project we had done so far so we know communication between the members was key. We were also on constant zoom calls and scheduled in a stand-up at the beginning of each day to review the progress and let the members know what section you were tackling next.
 
-We decided that everyone would do an aspect of backend and continue it through to frontend so we would all be involved in the fullstack application. I was on Users, Linh did products and Joel did brands. My sections included the logging in, register, user profiles and individual profiles. I then also took on the reviews as I had completed my sections before the others. I carried these pages into the front end design for them and then also did the home page and navbar.
+We decided that everyone would do an aspect of the back-end and continue it through to the front-end so we would all be involved in the fullstack application. I was on Users, Linh did products and Joel did brands. My sections included the logging in, register, user profiles and individual profiles. I then also took on the reviews as I had completed my sections before the others. I carried these pages into the front-end design and then also did the home page and navbar on the front-end.
 
 # Build/Code Process
 
@@ -90,16 +90,20 @@ Once the backend functionality was completed, I moved onto the front end for the
 
 ```js
 const [products, setProducts] = useState('');
-  const [randomProduct, setRandomProduct] = useState(null);
+const [randomProduct, setRandomProduct] = useState(null);
+```
+
 First I set some state.
+
+```js
 useEffect(() => {
-    API.GET(API.ENDPOINTS.getAllProducts)
-      .then(({ data }) => {
-        setProducts(data);
-        setRandomProduct(Math.floor(Math.random() * data.length));
-      })
-      .catch(({ message, response }) => console.error(message, response));
-  }, []);
+  API.GET(API.ENDPOINTS.getAllProducts)
+    .then(({ data }) => {
+      setProducts(data);
+      setRandomProduct(Math.floor(Math.random() * data.length));
+    })
+    .catch(({ message, response }) => console.error(message, response));
+}, []);
 ```
 
 Then I fetched the data and got a random number with the limit, the length of the array.
@@ -117,7 +121,7 @@ Then I fetched the data and got a random number with the limit, the length of th
 
 Then I used the product card to display the product.
 
-I also decided to include a drag and drop functionality to the profile image when you register. I did this because I thought it would make an otherwise quite bland page, something interesting. I researched a good npm install for drag and drop and managed to find one which was very similar in the way it was set out to what I had already coded in the register page. Firstly, I had to install react-drag-and-drop-files, then import FileUploader. Then for the file change I used this function:
+I also decided to include a drag and drop functionality to the profile image when you register. I did this because I thought it would make an otherwise quite bland page interesting. I researched a good npm install for drag and drop and managed to find one which was very similar in the way it was set out to what I had already coded in the register page. Firstly, I had to install react-drag-and-drop-files, then import FileUploader. Then for the file change I used this function:
 
 ```js
 const handleFileChange = (file) => {
@@ -186,14 +190,18 @@ As well as this, for the update and delete functions on the review’s controlle
 
 ```js
 await User.findOneAndUpdate(
-      { _id: req.currentUser._id },
-      { $pull: { reviews: { _id: req.params.reviewId } } }
-    );
+  { _id: req.currentUser._id },
+  { $pull: { reviews: { _id: req.params.reviewId } } }
+);
+```
+
 Step two, was to push on the new and updated review:
-  await User.findOneAndUpdate(
-      { _id: req.currentUser._id },
-      { $push: { reviews: newReview } }
-    );
+
+```js
+await User.findOneAndUpdate(
+  { _id: req.currentUser._id },
+  { $push: { reviews: newReview } }
+);
 ```
 
 Once I had worked this out it made deleting the review from the user profile easier, as I could take the first half of that process and simply stop there, remove the review and never replace it.
