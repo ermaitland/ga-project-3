@@ -1,10 +1,15 @@
 # Description
 
-For this project I was in a group of three with Linh Vu and Joel Sahiti. We were given the task to make a full stack application. We had one week to complete this task and we decided on a vegan food reviewing website. This consisted of a register, login, products page, brands page and reviews.
+Project-3 of General Assembly’s Software Engineering Immersive course. For this project I was in a group of three with Linh Vu and Joel Sahiti. We were given the task to make a full stack application. We had one week to complete this task and we decided on a vegan food reviewing website as it was Veganuary. This consisted of a register, login, product pages, brand pages, uses pages and reviews.
 
 # Deployment link
 
 https://vegan-products.netlify.app
+
+You can log in with the credentials:
+
+- Email: testme@testme.com
+- Password: Password!1
 
 # Getting Started/Code Installation
 
@@ -57,6 +62,7 @@ We decided that everyone would do an aspect of the back-end and continue it thro
 # Build/Code Process
 
 I was working on the user, which was logging in, registering and the authentication process. I also did the user profiles and user index as well as edited the reviews controller and created the reviews model.
+
 The validatePassword function comes from my user Schema where I used bcrypt to compare the hashed passwords:
 
 ```js
@@ -209,6 +215,7 @@ Once I had worked this out it made deleting the review from the user profile eas
 # Wins
 
 I am very proud of the reviews controller and Schema, as well as the virtual for the ratings. This aspect, although hard, gave me great experience in troubleshooting problems, it also led me to be more confident in helping out other people.
+
 I think for me, getting the cloudinary images to work felt great, I did this mostly in the front end on the register page. Later I merged this with the drag and drop functionality.
 
 ```js
@@ -223,6 +230,7 @@ await API.POST(API.ENDPOINTS.register, apiReqBody);
 ```
 
 I had to first get the cloudinary image id and attach it onto the formFields data, then I could send it up as the body on the register form. This felt great to get this working as it gives the user pages cool features.
+
 Overall, I think a huge achievement for me is that I had only just started learning MongoDB, and to create a full stack application in one week felt amazing.
 
 # Key Learnings/Takeaways
