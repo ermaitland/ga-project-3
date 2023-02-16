@@ -20,13 +20,13 @@ code .
 ```
 
 Then:
-For the backend, run:
+For the back-end, run:
 
 ```js
 npm run dev
 ```
 
-For the frontend, run:
+For the front-end, run:
 
 ```js
 npm start
@@ -57,7 +57,7 @@ We used excalidraw to give us a basic idea of how things would be laid out on th
 
 We chose to use Trello to organise our tasks and as a way to keep on track with what the other members in the group had completed or were working on. This was the biggest project we had done so far so we know communication between the members was key. We were also on constant zoom calls and scheduled in a stand-up at the beginning of each day to review the progress and let the members know what section you were tackling next.
 
-We decided that everyone would do an aspect of the back-end and continue it through to the front-end so we would all be involved in the fullstack application. I was on Users, Linh did products and Joel did brands. My sections included the logging in, register, user profiles and individual profiles. I then also took on the reviews as I had completed my sections before the others. I carried these pages into the front-end design and then also did the home page and navbar on the front-end.
+We decided that everyone would do an aspect of the back-end and continue it through to the front-end so we would all be involved in the full-stack application. I was on Users, Linh did products and Joel did brands. My sections included the logging in, register, user profiles and individual profiles. I then also took on the reviews as I had completed my sections before the others. I carried these pages into the front-end design and then also did the home page and navbar on the front-end.
 
 # Build/Code Process
 
@@ -78,7 +78,7 @@ userSchema.methods.validatePassword = function validatePassword(password) {
 };
 ```
 
-Firsty, I saved the encrypted password, this is after it has been hashed and salted, then I create the function which I go on to use in the login function on the user controller. This compares the passworded entered with the hashed password stored and allows the user to login but creating a token:
+Firsty, I saved the encrypted password, which was hashed and salted. Then I create the function which I go on to use in the login function on the user controller. This compared the passwords entered with the hashed password stored and allows the user to login by creating a token:
 
 ```js
 const isValidPassword = user.validatePassword(req.body.password);
@@ -92,7 +92,7 @@ const token = jwt.sign({ userId: user._id, isAdmin: user.isAdmin }, SECRET, {
 });
 ```
 
-Once the backend functionality was completed, I moved onto the front end for the same sections, I also took on the Home page and the Navbar. For the Home page we had decided we wanted a random product from our array of products, so I used useEffect to get all the products, and then the product card to display:
+Once the back-end functionality was completed, I moved onto the front-end for the same sections, I also took on the Home page and the Navbar. For the Home page we had decided we wanted a random product from our array of products, so I used useEffect to get all the products, and then the product card to display:
 
 ```js
 const [products, setProducts] = useState('');
@@ -216,7 +216,7 @@ Once I had worked this out it made deleting the review from the user profile eas
 
 I am very proud of the reviews controller and Schema, as well as the virtual for the ratings. This aspect, although hard, gave me great experience in troubleshooting problems, it also led me to be more confident in helping out other people.
 
-I think for me, getting the cloudinary images to work felt great, I did this mostly in the front end on the register page. Later I merged this with the drag and drop functionality.
+I think for me, getting the Cloudinary images to work felt great, I did this mostly in the front end on the register page. Later I merged this with the drag and drop functionality.
 
 ```js
 const cloudinaryResponse = await API.POST(API.ENDPOINTS.cloudinary, imageData);
@@ -229,13 +229,13 @@ const apiReqBody = {
 await API.POST(API.ENDPOINTS.register, apiReqBody);
 ```
 
-I had to first get the cloudinary image id and attach it onto the formFields data, then I could send it up as the body on the register form. This felt great to get this working as it gives the user pages cool features.
+I had to first get the Cloudinary image id and attach it onto the formFields data, then I could send it up as the body on the register form. This felt great to get this working as it gives the user pages cool features.
 
 Overall, I think a huge achievement for me is that I had only just started learning MongoDB, and to create a full stack application in one week felt amazing.
 
 # Key Learnings/Takeaways
 
-In this project I definitely feel much more comfortable with troubleshooting and asking for advice when I need it. I think our whole group really came together and worked as a team. Initially we did paired programming to set up the outline for the backend and frontend, so that was a good experience. We also did daily stand-ups and decided to use Trello to keep up to date with each other’s progress.
+In this project I definitely feel much more comfortable with troubleshooting and asking for advice when I need it. I think our whole group really came together and worked as a team. Initially we did paired programming to set up the outline for the back-end and front-end, so that was a good experience. We also did daily stand-ups and decided to use Trello to keep up to date with each other’s progress.
 
 For this project we had 3 members in our team which is the most we have had so far, this meant it was vital to be in good communication throughout to make sure things like instals and merges go to plan. We had purposefully designated a few times during the day to push and pull all our work and this meant we were constantly up to date.
 
